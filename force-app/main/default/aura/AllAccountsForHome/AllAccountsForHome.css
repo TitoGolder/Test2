@@ -1,0 +1,6 @@
+.THIS {
+}
+.THIS .recordlink {
+    cursor: pointer;
+    border-bottom: 1px dotted;
+}

@@ -1,0 +1,59 @@
+<aura:component controller="AllAccountsForHomeApexController" implements="flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="accounts" type="Object[]"/>
+    <aura:attribute name="showPopover" type="string"/>
+    <lightning:navigation aura:id="navService"/> 
+    <aura:handler name="init" value="{!this}" action="{!c.initialise}" />
+    <lightning:overlayLibrary aura:id="overlayLib"/> 
+    <lightning:card title="All Customers">
+        <div class="slds-p-left_medium slds-p-right_medium">
+                <aura:iteration items="{!v.accounts}" var="account">
+                    <div class="slds-m-bottom_small">
+                        <p class="slds-truncate" title="{!account.Name}">
+                            <lightning:icon iconName="standard:account"></lightning:icon> 
+                            <a class="recordlink slds-m-left_small" onclick="{!c.handleClick}" onmousemove="{!c.handleShowPopover}" data-recordid="{!account.Id}">{!account.Name}</a>
+                        </p> 
+                        <aura:if isTrue="{!(v.showPopover == account.Id)}">
+                            <div class="slds-is-absolute">
+                                <div class="slds-m-top_small">
+                                    <section class="slds-popover slds-nubbin_top-left" role="dialog" title="hello">
+										<button class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close" title="Close dialog" onclick="{!c.handleHidePopover}">
+                                            <lightning:icon iconName="utility:close" size="x-small"/>
+                                            <span class="slds-assistive-text">Close dialog</span>
+										</button>		
+										<header class="slds-popover__header">
+											<h2 class="slds-text-heading_small">{!account.Name}</h2>
+										</header> 
+                                        <div class="slds-popover__body">
+                                            <dl class="slds-popover__body-list"> 
+                                                <aura:iteration items="{!account.Contacts}" var="contact"> 
+                                                    <dd class="slds-m-top_x-small">
+                                                        <p class="slds-truncate" title="{!contact.Name}">
+                                                            <lightning:icon iconName="standard:contact"></lightning:icon>
+                                                            <a class="recordlink slds-m-left_small" onclick="{!c.handleClick}" data-recordid="{!contact.Id}">{!contact.Name}</a>
+                                                        </p>
+                                                        <dl class="slds-list_horizontal slds-wrap slds-text-body_small">
+                                                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Title">Title</dt>
+                                                          <dd class="slds-item_detail slds-text-color_weak slds-truncate" title="{!contact.Title}">{!contact.Title}</dd>
+                                                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Phone">Phone</dt>
+                                                          <dd class="slds-item_detail slds-text-color_weak slds-truncate" title="{!contact.Phone}">
+                                                              <lightning:formattedPhone value="{!contact.Phone}" ></lightning:formattedPhone>
+                                                          </dd>
+                                                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Email">Email</dt>
+                                                          <dd class="slds-item_detail slds-text-color_weak slds-truncate" title="{!contact.Email}">
+                                                              <lightning:formattedEmail value="{!contact.Email}" hideIcon="true"></lightning:formattedEmail>
+                                                          </dd>
+
+                                                        </dl>
+                                                    </dd> 
+                                                </aura:iteration>
+                                            </dl>
+                                        </div> 
+                                    </section>         
+                                </div>
+                            </div> 
+                        </aura:if> 
+                    </div>
+                </aura:iteration>
+        </div>
+    </lightning:card>
+</aura:component>

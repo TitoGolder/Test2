@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="HelloWorld">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="contacts" type="Object[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card iconName="custom:custom85" title="People">
+		<div class="slds-p-left_medium slds-p-right_medium"> 
+        	<ul class="slds-list_vertical slds-has-dividers_top-space">
+            	<aura:iteration items="{!v.contacts}" var="contact">
+                    <li class="slds-list__item" >{!contact.Name} </li>
+	            </aura:iteration>
+	        </ul>	
+        </div>
+    </lightning:card>
+</aura:component>

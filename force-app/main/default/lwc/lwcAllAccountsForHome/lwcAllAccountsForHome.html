@@ -1,0 +1,6 @@
+<template>
+    <lightning-card>
+        <h3 slot="title"><b>All Customers</b></h3>
+        <c-lwc-account-for-home if:true={accounts.data} for:each={accounts.data} for:item="account" account={account} key={account.Id}></c-lwc-account-for-home>
+    </lightning-card>
+</template>

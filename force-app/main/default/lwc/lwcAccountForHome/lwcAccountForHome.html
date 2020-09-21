@@ -1,0 +1,18 @@
+<template>
+    <lightning-card variant="narrow">
+        <div slot="title">
+            <lightning-icon icon-name="standard:account"></lightning-icon>
+            <a class="recordlink slds-var-m-left_small" onclick={handleClick}>{account.Name}</a>
+        </div>        
+        <div slot="actions" onclick={togglePopover} class="slds-icon_container">
+            <div style="display: inline-block; font-size: 0.75em;">{account.Contacts.length}</div>
+            <div style="display: inline-block;">
+                <lightning-icon if:false={showContacts} icon-name="utility:people" size="small" variant="light"></lightning-icon>
+                <lightning-icon if:true={showContacts} icon-name="utility:leave_conference" size="small" variant="light"></lightning-icon>
+            </div>
+        </div>
+        <div class="slds-var-m-left_x-large">
+            <c-lwc-contact-for-account if:true={showContacts} for:each={account.Contacts} for:item="contact" contact={contact} key={contact.Id}></c-lwc-contact-for-account>
+        </div>
+    </lightning-card>
+</template>

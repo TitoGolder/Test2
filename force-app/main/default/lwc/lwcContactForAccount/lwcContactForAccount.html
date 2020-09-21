@@ -1,0 +1,24 @@
+<template>
+    <div class="slds-box slds-box_xx-small slds-m-right_large slds-m-bottom_small">
+        <lightning-card>
+            <div slot="title">
+                <lightning-icon icon-name="standard:contact"></lightning-icon>
+                <a class="recordlink slds-m-left_small" onclick={handleClick}>{contact.Name}</a>
+                <dd class="slds-m-top_x-small">
+                    <dl class="slds-list_horizontal slds-wrap slds-text-body_small">
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate">Title</dt>
+                      <dd class="slds-item_detail slds-text-color_weak slds-truncate">{contact.Title}</dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate">Phone</dt>
+                      <dd class="slds-item_detail slds-text-color_weak slds-truncate">
+                          <lightning-formatted-phone value={contact.Phone}></lightning-formatted-phone>
+                      </dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate">Email</dt>
+                      <dd class="slds-item_detail slds-text-color_weak slds-truncate">
+                          <lightning-formatted-email value={contact.Email} hide-icon="true"></lightning-formatted-email>
+                      </dd>
+                    </dl>
+                </dd> 
+            </div>        
+        </lightning-card>
+    </div>
+</template>

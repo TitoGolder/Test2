@@ -1,0 +1,12 @@
+.recordlink {
+    cursor: pointer;
+    border-bottom: 1px dotted;
+}
+
+.recordlink:hover {
+    text-decoration: none;
+}
+
+.nested {
+    padding: 10px 5px 10px 50px;
+}

@@ -1,0 +1,8 @@
+.recordlink {
+    cursor: pointer;
+    border-bottom: 1px dotted;
+}
+
+.recordlink:hover {
+    text-decoration: none;
+}
